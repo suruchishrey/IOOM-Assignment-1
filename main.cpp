@@ -2,7 +2,8 @@
 #include "Address.cpp"
 #include "Student.cpp"
 #include "Faculty.cpp"
-
+#include<stdio.h>
+using namespace std;
 #define DSIZE 3                     //3 designations and 3 departments(e.g.)
 
 void print_all(Person *p_ptr)
@@ -12,47 +13,75 @@ void print_all(Person *p_ptr)
 
 int main()
 {
-    const Department departments[DSIZE]={{"CSE"},{"ECE"},{"CME"}};
+    const Department departments[DSIZE]={{"CSE"},{"ECE"},{"CME"}};                  //sample data assuming only 3 depts are there
     const Designation designations[DSIZE]={{"HOD"},{"Professor"},{"Assistant Professor"}};
-#include "Person.cpp"
-#include "Address.cpp"
-#include "Student.cpp"
-#include "Faculty.cpp"
+    char name[SIZE],hnum[SIZE],street[SIZE],city[SIZE];
+    int ch,ch2;
+    Department d;
+    Designation des;
+    char choice;
+    //---------------------------Part for user interface---------------------------
+    do
+    {
+        cout<<"Enter \n1.Student's data \n2.Faculty's data\n:";
+        cin>>ch2;
+        if(ch2==2){
+            cout<<"Faculty:";
+            cout<<"\nName:";
+            cin.getline(name,SIZE);
+            cout<<"\nAddress:\nhouse no:";
+            cin.getline(hnum,SIZE);
+            cout<<"\nStreet name:";
+            cin.getline(street,SIZE);
+            cout<<"\nCity name:";
+            cin.getline(city,SIZE);
+            cout<<"\nEnter department code:\n0 for CSE\n1 for ECE\n2 for CME";
+            cin>>ch;
+            d=departments[ch];                          
+            cout<<"\nEnter designation code:\n0 for HOD\n1 for Professor\n2 for Assistant Professor";
+            cin>>ch;
+            des=designations[ch];
+            Faculty newfaculty(name,d,des,hnum,street,city);
+            cout<<"\nEntered credentials are as follows:";
+            newfaculty.print();
+        }
+        else{
+            cout<<"Student:";
+            cout<<"\nName:";
+            cin.getline(name,SIZE);
+            cout<<"\nAddress:\nhouse no:";
+            cin.getline(hnum,SIZE);
+            cout<<"\nStreet name:";
+            cin.getline(street,SIZE);
+            cout<<"\nCity name:";
+            cin.getline(city,SIZE);
+            cout<<"\nEnter department code:\n0 for CSE\n1 for ECE\n2 for CME";
+            cin>>ch;
+            d=departments[ch];  
+            Student newstudent(name,d,hnum,street,city);
+            cout<<"\nEntered credentials are as follows:";
+            newstudent.print();
+        }
+            cout<<"\nWant to enter more?(y for yes , n for no):";
+            cin>>choice;
+    } while (choice=='y');
+    //-----------------------------user interface ends here--------------------------
 
-#define DSIZE 3                     //3 designations and 3 departments(e.g.)
-
-void print_all(Person *p_ptr)
-{
-    p_ptr->print();
-}
-
-int main()
-{
-    const Department departments[DSIZE]={{"CSE"},{"ECE"},{"CME"}};
-    const Designation designations[DSIZE]={{"HOD"},{"Professor"},{"Assistant Professor"}};
-
-    Faculty f("Suruchi",departments[0],designations[0],"LIG 10","Housing Board Colony","Kanker");
+    //--------------------Runtime Polymorphism---------------------------------------
+    cout<<"\n\nNow dummy entries showcasing run time polymorphism:\n";
+    Student s("Student",departments[0],"student house","student street","student city");
+    s.addCourse("Demo");
+    Faculty f("Faculty",departments[0],designations[0],"faculty house","faculty Colony","faculty city");
     f.addCourses("CPL");
-    f.print();
-    /*Student s("Lily",departments[0],"10","albelapara","Kanker");
-    s.addCourse("IOOM");
-    s.print();*/
-    Student s("Lily",departments[0],"10","albelapara","Kanker");
-    
-    Person p("Moti",departments[0],"5","Thelkabod","Kanker");
-    p.print();
-    Person*ptrs[2];
+    Person p("Person",departments[0],"person house","person Street","person city");
+    Person*ptrs[3];
     ptrs[0]=&p;
     ptrs[1]=&f;
-    print_all(ptrs[0]);
-    print_all(ptrs[1]);
-    return 0;
-}
-    Faculty f("Suruchi",departments[0],designations[0],"LIG 10","Housing Board Colony","Kanker");
-    f.addCourses("CPL");
-    Student s("Lily",departments[0],"10","albelapara","Kanker");
-    s.addCourse("IOOM");
-    Person p("Moti",departments[0],"5","Thelkabod","Kanker");
-    
+    ptrs[2]=&s;
+    for(int i=0;i<3;++i)
+    {
+        cout<<"\n\nShowing data of ptr "<<i+1;
+        print_all(ptrs[i]);
+    }
     return 0;
 }
