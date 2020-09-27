@@ -2,8 +2,6 @@
 #include<string.h>
 #include "Student.h"
 
-using namespace std;
-
 int Student::getId()
 {
     return STUD_ID;
@@ -18,11 +16,15 @@ double Student::getAvgGrade()               //returns the avg of all the grades 
 {
     int i;
     double avg=0.0;
+
     for(i=0;i<numCourses;++i)
     {
         avg+=grade[i];
     }
-    avg/=numCourses;
+    if(numCourses!=0)
+    {
+        avg/=numCourses;
+    }
     return avg;
 }
 
@@ -57,6 +59,7 @@ bool Student::addCoursesGrade(char*coursename,int grade_)
             {
                 hasEnrolled=true; 
                 grade[i]=grade_;
+                retval=true;
             }
         }
     
