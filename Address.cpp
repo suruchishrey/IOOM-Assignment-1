@@ -2,8 +2,6 @@
 #include<string.h>
 #include "Address.h"
 
-using namespace std;
-
 Address::Address(){} 
 
 Address::Address(char housenum[SIZE],char streetname[SIZE],char cityname[SIZE])
@@ -32,15 +30,15 @@ void Address::setAddress(char housenum[SIZE],char streetname[SIZE],char cityname
     strcpy(street_name,streetname);
     strcpy(city_name,cityname);
 }
-void Address::setHouse_num(char*housenum)
+void Address::setHouse_num(char housenum[SIZE])
 {
     strcpy(house_num,housenum);
 }
-void Address::setStreet_name(char*streetname)
+void Address::setStreet_name(char streetname[SIZE])
 {
     strcpy(street_name,streetname);
 }
-void Address::setCity_name(char*cityname)
+void Address::setCity_name(char cityname[SIZE])
 {
     strcpy(city_name,cityname);
 }
