@@ -29,7 +29,7 @@ double Student::getAvgGrade()               //returns the avg of all the grades 
 }
 
 //first check if in that particular course the student has enrooled or not,if NOT,then add that course
-void Student::addCourse(char*coursename)
+void Student::addCourse(char coursename[SIZE])
 {
     bool hasEnrolled=false;
     if(numCourses<SIZE)                             
@@ -49,7 +49,7 @@ void Student::addCourse(char*coursename)
 }
 
 //if a student has enrolled in that particular course then add its grade to his data,if not then enroll him and add its grade to his data
-bool Student::addCoursesGrade(char*coursename,int grade_)
+bool Student::addCoursesGrade(char coursename[SIZE],int grade_)
 {
     addCourse(coursename);
     bool hasEnrolled=false,retval=false;
@@ -67,7 +67,7 @@ bool Student::addCoursesGrade(char*coursename,int grade_)
 }
 
 /*If that course is present then delete it ,i.e.,shift all the courses in courses array one left and make the last element null*/
-bool Student::dropCourse(char*coursename)
+bool Student::dropCourse(char coursename[SIZE])
 {
     bool retval=false;
     int i;
@@ -96,7 +96,7 @@ void Student::printGrade()
     cout<<"\nGrade= "<<avg_grade;
 }
 
-void Student::print()
+void Student::print()                           //function overiding
 {
     Person::print();
     cout<<"\nStudent ID= "<<getId();
