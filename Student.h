@@ -1,10 +1,10 @@
 #ifndef STUDENT_H //prevent multiple inclusions
 #define STUDENT_H
 #include "Person.h"
-
+#include<string.h>
 using namespace std;
 
-class Student: public Person
+class Student:public Person
 {
     private:
         const int STUD_ID;
@@ -15,6 +15,7 @@ class Student: public Person
         //Explicit call to the constructor of Person class,initialization list
         Student(char*name_,Department dept_,char*housenum,char*streetname,char*cityname):Person(name_,dept_,housenum,streetname,cityname),STUD_ID(getID()+14)
         {
+            cout<<"Student constructed->";
             numCourses=0;
         }
         int getId();
