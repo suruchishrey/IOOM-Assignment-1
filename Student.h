@@ -9,23 +9,23 @@ class Student:public Person
     private:
         const int STUD_ID;
         int numCourses;
-        char*courses[SIZE];            
+        char courses[SIZE][SIZE];            
         int grade[SIZE];
     public:
         //Explicit call to the constructor of Person class,initialization list
-        Student(char*name_,Department dept_,char*housenum,char*streetname,char*cityname):Person(name_,dept_,housenum,streetname,cityname),STUD_ID(getID()+14)
+        Student(char name_[SIZE],Department dept_,char housenum[SIZE],char streetname[SIZE],char cityname[SIZE]):Person(name_,dept_,housenum,streetname,cityname),STUD_ID(getID()+14)
         {
-            cout<<"Student constructed->";
+            //cout<<"Student constructed->";
             numCourses=0;
         }
         int getId();
         int getNumCourses();
         double getAvgGrade();
-        void addCourse(char*coursename);
-        bool addCoursesGrade(char*coursename,int grade_);
-        bool dropCourse(char*coursename);
+        void addCourse(char coursename[SIZE]);
+        bool addCoursesGrade(char coursename[SIZE],int grade_);
+        bool dropCourse(char coursename[SIZE]);
         void printGrade();
-        virtual void print();
+        virtual void print();                   //runtime polymorphism,function overriding
 };
 
 #endif
