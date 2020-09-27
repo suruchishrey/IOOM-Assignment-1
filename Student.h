@@ -1,3 +1,7 @@
+/*
+    Enrollment no.: BT18CSE014
+    Name: Suruchi Shrey
+*/
 #ifndef STUDENT_H //prevent multiple inclusions
 #define STUDENT_H
 #include "Person.h"
