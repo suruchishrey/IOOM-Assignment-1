@@ -6,7 +6,7 @@ int Faculty::getId()
     return F_ID;
 }
 
-bool Faculty::getCourses(char*course)
+bool Faculty::getCourses(char course[SIZE])
 {
     int i;
     bool retval=false;
@@ -20,7 +20,7 @@ bool Faculty::getCourses(char*course)
     return retval;
 }
 
-bool Faculty::addCourses(char*course)
+bool Faculty::addCourses(char course[SIZE])
 {
     bool retval=false;
     if(numCourses<getMax())
@@ -32,7 +32,7 @@ bool Faculty::addCourses(char*course)
 }
 
 /*If that course is present then delete it ,i.e.,shift all the courses in courses array one left and make the last element null*/
-bool Faculty::removeCourses(char*course)
+bool Faculty::removeCourses(char course[SIZE])
 {
     bool retval=false;
     int i;
@@ -55,7 +55,7 @@ bool Faculty::removeCourses(char*course)
     return retval;
 }
 
-void Faculty::print()
+void Faculty::print()                       //function overriding
 {
     Person::print();
     cout<<"\nFaculty ID= "<<getId();
