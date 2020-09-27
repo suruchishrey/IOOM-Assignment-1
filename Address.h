@@ -1,6 +1,6 @@
 #ifndef ADDRESS_H    //prevent multiple inclusions
 #define ADDRESS_H
-#define SIZE 40                             //size of arrays used
+#define SIZE 50                             //size of arrays used
 using namespace std;
 
 class Address{
@@ -19,9 +19,9 @@ class Address{
         char* getStreet_name();
         char* getCity_name();
         void setAddress(char housenum[SIZE],char streetname[SIZE],char cityname[SIZE]);
-        void setHouse_num(char* housenum);
-        void setStreet_name(char*streetname);
-        void setCity_name(char* cityname);
+        void setHouse_num(char housenum[SIZE]);
+        void setStreet_name(char streetname[SIZE]);
+        void setCity_name(char cityname[SIZE]);
 };
 
 #endif
