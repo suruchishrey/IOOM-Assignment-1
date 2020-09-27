@@ -1,6 +1,7 @@
 #ifndef PERSON_H    //prevent multiple inclusions
 #define PERSON_H
 #include "Address.h"
+#include<string.h>
 using namespace std;
 
 struct Department{
@@ -16,10 +17,11 @@ class Person{
         Department dept;
     public:
         //Implicit call to the constructor of address(object of Address class),initialization list
-        Person(char*name_,Department dept_,char*housenum,char*streetname,char*cityname):address(housenum,streetname,cityname),MAX(6)
+        Person(char name_[SIZE],Department dept_,char housenum[SIZE],char streetname[SIZE],char cityname[SIZE]):address(housenum,streetname,cityname),MAX(6)
         {
-            strcpy(this->name,name_);
-            this->dept=dept_;
+            //cout<<"Person constructed->";
+            strcpy(name,name_);
+            dept=dept_;
             count++;
         }
         char*getName();
@@ -27,12 +29,12 @@ class Person{
             return count;
         }
         Department getDepartment();
-        void setName(char*name);
+        void setName(char name[SIZE]);
         void setDept(Department d);
-        void changeName(char*name);
-        void changeAddress(char*housenum,char*streetname,char*cityname);
+        void changeName(char name[SIZE]);
+        void changeAddress(char housenum[SIZE],char streetname[SIZE],char cityname[SIZE]);
         int getMax();
-        virtual void print();
+        virtual void print();               //For runtime polymorphism,function overriding
 };
 
 #endif
