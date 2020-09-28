@@ -1,7 +1,3 @@
-/*
-    Enrollment no.: BT18CSE014
-    Name: Suruchi Shrey
-*/
 #include "Person.cpp"
 #include "Address.cpp"
 #include "Student.cpp"
@@ -19,8 +15,9 @@ int main()
 {
     const Department departments[DSIZE]={{"CSE"},{"ECE"},{"CME"}};                  //sample data assuming only 3 depts are there
     const Designation designations[DSIZE]={{"HOD"},{"Professor"},{"Assistant Professor"}};
-    char name[SIZE],hnum[SIZE],street[SIZE],city[SIZE];
-    int ch,ch2;
+    char coursesAvailable[DSIZE][SIZE]={"IOOM","OS","NFT"};
+    char name[SIZE],hnum[SIZE],street[SIZE],city[SIZE],courseEntered[SIZE];
+    int ch,ch2,ch3;
     Department d;
     Designation des;
     char choice;
@@ -46,6 +43,10 @@ int main()
             cin>>ch;
             des=designations[ch];
             Faculty newfaculty(name,d,des,hnum,street,city);
+            cout<<"\nEnter 1 course(its code) to add:";
+            cout<<"\n0 for IOOM\n1 for OS\n2 for NFT\n";
+            cin>>ch;
+            newfaculty.addCourses(coursesAvailable[ch]);
             cout<<"\nEntered credentials are as follows:";
             newfaculty.print();
         }
@@ -63,6 +64,13 @@ int main()
             cin>>ch;
             d=departments[ch];  
             Student newstudent(name,d,hnum,street,city);
+            cout<<"\nEnter 1 course(its code) to add:";
+            cout<<"\n0 for IOOM\n1 for OS\n2 for NFT\n";
+            cin>>ch;
+            newstudent.addCourse(coursesAvailable[ch]);
+            cout<<"\nEnter its grade(1-100):\n";
+            cin>>ch3;
+            newstudent.addCoursesGrade(coursesAvailable[ch],ch3);
             cout<<"\nEntered credentials are as follows:";
             newstudent.print();
         }
