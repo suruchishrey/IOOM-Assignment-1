@@ -1,7 +1,3 @@
-/*
-    Enrollment no.: BT18CSE014
-    Name: Suruchi Shrey
-*/
 #include<iostream>
 #include<string.h>
 #include "Student.h"
@@ -97,7 +93,16 @@ bool Student::dropCourse(char coursename[SIZE])
 void Student::printGrade()
 {
     double avg_grade=getAvgGrade();
-    cout<<"\nGrade= "<<avg_grade;
+    if(numCourses>0)
+    {
+        cout<<"Grades with courses:\n";
+        for(int i=0;i<numCourses;++i)
+        {
+            cout<<grade[i]<<" "<<courses[i]<<"\n";
+        }
+    }
+    
+    cout<<"\nAverage Grade= "<<avg_grade;
 }
 
 void Student::print()                           //function overiding
@@ -105,4 +110,13 @@ void Student::print()                           //function overiding
     Person::print();
     cout<<"\nStudent ID= "<<getId();
     cout<<"\nNo of courses enrolled= "<<numCourses;
+    if(numCourses>0)
+    {
+        cout<<"\nCourses are:\n";
+        for(int i=0;i<numCourses;++i)
+        {
+            cout<<courses[i]<<"\n";
+        }
+        printGrade();
+    }
 }
