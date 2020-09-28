@@ -1,7 +1,3 @@
-/*
-    Enrollment no.: BT18CSE014
-    Name: Suruchi Shrey
-*/
 #include<iostream>
 #include "Faculty.h"
 
@@ -64,4 +60,12 @@ void Faculty::print()                       //function overriding
     Person::print();
     cout<<"\nFaculty ID= "<<getId();
     cout<<"\nNo of courses taken= "<<numCourses;
+    if(numCourses>0)
+    {
+        cout<<"\nCourses are:\n";
+        for(int i=0;i<numCourses;++i)
+        {
+            cout<<courses[i]<<"\n";
+        }
+    }
 }
